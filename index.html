@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hybrid IDS — Overview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body data-page="overview">
+
+<canvas id="ambient-canvas"></canvas>
+
+<div class="app-shell">
+
+  <nav class="nav-rail">
+    <div class="nav-logo">H</div>
+    <a class="nav-item active" href="/index.html" title="Overview">&#9635;</a>
+    <a class="nav-item" href="/history.html" title="Event Log">&#8801;</a>
+  </nav>
+
+  <div>
+    <div class="topbar">
+      <div>
+        <h1>Hybrid IDS — Live Overview</h1>
+        <div class="subtitle">AI + Rule-Based Detection // enp0s8</div>
+      </div>
+      <div class="status-pill" id="status-pill">
+        <span class="status-dot"></span>
+        <span id="status-label">CONNECTING</span>
+      </div>
+    </div>
+
+    <div class="content">
+
+      <div class="metric-grid">
+        <div class="metric-card signal">
+          <div class="metric-label">Total Flows</div>
+          <div class="metric-value" id="metric-total" data-value="0">0</div>
+        </div>
+        <div class="metric-card normal">
+          <div class="metric-label">Normal</div>
+          <div class="metric-value normal" id="metric-normal" data-value="0">0</div>
+        </div>
+        <div class="metric-card suspicious">
+          <div class="metric-label">Suspicious</div>
+          <div class="metric-value suspicious" id="metric-suspicious" data-value="0">0</div>
+        </div>
+        <div class="metric-card threat">
+          <div class="metric-label">High-Confidence Threats</div>
+          <div class="metric-value threat" id="metric-threat" data-value="0">0</div>
+        </div>
+      </div>
+
+      <div class="panel-grid">
+        <div class="panel">
+          <div class="panel-title">
+            Live Alert Feed
+            <span class="count-badge" id="alert-count-badge">0</span>
+          </div>
+          <div class="alert-feed" id="alert-feed">
+            <div class="empty-state">Loading...</div>
+          </div>
+        </div>
+
+        <div class="charts-stack">
+          <div class="panel">
+            <div class="panel-title">Severity Breakdown</div>
+            <div class="chart-wrap"><canvas id="severity-chart"></canvas></div>
+          </div>
+          <div class="panel">
+            <div class="panel-title">Top Offending Sources</div>
+            <div id="top-offenders"><div class="empty-state">Loading...</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-title">Event Volume — Last 30 Minutes</div>
+        <div class="chart-wrap" style="height:220px"><canvas id="timeline-chart"></canvas></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script src="/app.js"></script>
+</body>
+</html>

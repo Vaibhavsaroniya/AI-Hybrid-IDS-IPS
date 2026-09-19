@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hybrid IDS — Event Log</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body data-page="history">
+
+<canvas id="ambient-canvas"></canvas>
+
+<div class="app-shell">
+
+  <nav class="nav-rail">
+    <div class="nav-logo">H</div>
+    <a class="nav-item" href="/index.html" title="Overview">&#9635;</a>
+    <a class="nav-item active" href="/history.html" title="Event Log">&#8801;</a>
+  </nav>
+
+  <div>
+    <div class="topbar">
+      <div>
+        <h1>Event Log</h1>
+        <div class="subtitle">Full historical record // logs/live_security_events.csv</div>
+      </div>
+      <div class="status-pill idle">
+        <span class="status-dot"></span>
+        <span>READ-ONLY</span>
+      </div>
+    </div>
+
+    <div class="content">
+
+      <div class="filter-bar">
+        <select id="filter-severity">
+          <option value="ALL">All severities</option>
+          <option value="HIGH">High</option>
+          <option value="MEDIUM">Medium</option>
+          <option value="LOW">Low</option>
+          <option value="NONE">None</option>
+        </select>
+        <input id="filter-source" type="text" placeholder="Filter by source IP...">
+      </div>
+
+      <div class="table-scroll">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Time</th>
+              <th>Source</th>
+              <th>Destination</th>
+              <th>Protocol</th>
+              <th>Dst Port</th>
+              <th>AI Prediction</th>
+              <th>Severity</th>
+              <th>Rule Alerts</th>
+              <th>Final Decision</th>
+            </tr>
+          </thead>
+          <tbody id="events-tbody">
+            <tr><td colspan="9" class="empty-state">Loading...</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="pagination">
+        <span id="page-info">—</span>
+        <button id="prev-page">&larr; Prev</button>
+        <button id="next-page">Next &rarr;</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script src="/app.js"></script>
+</body>
+</html>
